@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace FrequencyDictionaryBuilder
 {
     /// <summary>
-    /// Frequecy dictionary builder
+    /// Frequency dictionary builder
     /// </summary>
     public class DictionaryBuilder : IDictionaryBuilder
     {

@@ -38,7 +38,7 @@ namespace FrequencyDictionaryBuilder.Tests
             var dataKeys = data.Keys.ToArray();
             var dataValues = data.Values.ToArray();
 
-            for(int i=0; i<reference.Count; i++)
+            for (int i = 0; i < reference.Count; i++)
             {
                 Assert.IsTrue(string.Equals(dataKeys[i], refKeys[i]));
                 Assert.IsTrue(dataValues[i] == refValues[i]);
@@ -56,6 +56,37 @@ namespace FrequencyDictionaryBuilder.Tests
             var data = this.builder.BuildDictionary("random");
             var dataSummary = data.Values.Sum();
             Assert.AreEqual(refLength, dataSummary);
+        }
+
+        [TestMethod]
+        public void BatcherTest()
+        {
+            var input = new List<int>()
+            {
+                1,2,3,4,5,6,7,8,9,0
+            };
+
+            var reference = new List<List<int>>()
+            {
+                new List<int>(){1,2,3},
+                new List<int>(){4,5,6},
+                new List<int>(){7,8,9},
+                new List<int>(){ 0 }
+            };
+
+
+            var batches = input.ToBatches(3).ToList();
+
+            Assert.AreEqual(reference.Count, batches.Count);
+            for(int i=0; i < reference.Count; i++)
+            {
+                Assert.AreEqual(reference[i].Count, batches[i].Count);
+
+                for(int j=0; j<reference[i].Count; j++)
+                {
+                    Assert.AreEqual(reference[i][j], batches[i][j]);
+                }
+            }
         }
     }
 }

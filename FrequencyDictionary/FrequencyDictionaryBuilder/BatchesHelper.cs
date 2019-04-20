@@ -14,9 +14,9 @@ namespace FrequencyDictionaryBuilder
         /// <param name="source">Source enumerable</param>
         /// <param name="batchSize">Number of element in batch</param>
         /// <returns>Enumeration of batches</returns>
-        public static IEnumerable<List<string>> ToBatches(this IEnumerable<string> source, int batchSize)
+        public static IEnumerable<List<T>> ToBatches<T>(this IEnumerable<T> source, int batchSize)
         {
-            List<string> batch = new List<string>(batchSize);
+            List<T> batch = new List<T>(batchSize);
             int index = 0;
             var enumerator = source.GetEnumerator();
             while (enumerator.MoveNext())
@@ -30,7 +30,7 @@ namespace FrequencyDictionaryBuilder
                 }
                 if (index == 0)
                 {
-                    batch = new List<string>(batchSize);
+                    batch = new List<T>(batchSize);
                 }
             }
             if (batch != null && batch.Any())

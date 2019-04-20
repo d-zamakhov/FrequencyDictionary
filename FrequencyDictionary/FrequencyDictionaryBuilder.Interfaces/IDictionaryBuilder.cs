@@ -19,11 +19,10 @@ namespace FrequencyDictionaryBuilder
         IOutputWriter Writer { get; set; }
 
         /// <summary>
-        /// Buildes dictionary from source
+        /// Builds dictionary from source
         /// </summary>
         /// <param name="source">Data source</param>
-        /// <param name="trimChars">Chars to trim from the words</param>
-        /// <returns></returns>
+        /// <returns>Word count dictionary</returns>
         Dictionary<string, long> BuildDictionary(object source);
 
         /// <summary>
