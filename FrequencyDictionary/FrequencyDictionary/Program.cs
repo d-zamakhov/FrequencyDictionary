@@ -1,4 +1,4 @@
-﻿using FrequencyDictionaryBuilder;
+﻿using FrequencyDictionaryBuilder.Interfaces;
 using FrequencyDictionaryBuilder.Modules;
 using Ninject;
 using System;
