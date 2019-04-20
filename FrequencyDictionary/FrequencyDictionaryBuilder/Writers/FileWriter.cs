@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace FrequencyDictionaryBuilder.Modules.Writers
+namespace FrequencyDictionaryBuilder.Writers
 {
     /// <summary>
     /// Output writer to file

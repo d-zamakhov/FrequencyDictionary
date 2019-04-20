@@ -1,6 +1,6 @@
 ﻿using FrequencyDictionaryBuilder.Interfaces;
-using FrequencyDictionaryBuilder.Modules.Readers;
-using FrequencyDictionaryBuilder.Modules.Writers;
+using FrequencyDictionaryBuilder.Readers;
+using FrequencyDictionaryBuilder.Writers;
 using Ninject.Modules;
 
 namespace FrequencyDictionaryBuilder.Modules

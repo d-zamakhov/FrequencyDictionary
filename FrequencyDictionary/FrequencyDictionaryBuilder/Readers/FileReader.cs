@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace FrequencyDictionaryBuilder.Modules.Readers
+namespace FrequencyDictionaryBuilder.Readers
 {
     /// <summary>
     /// Reader from file
