@@ -1,0 +1,21 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/FrequencyDictionary/.vs
+/FrequencyDictionary/FileReader/bin/Debug
+/FrequencyDictionary/FileReader/obj
+/FrequencyDictionary/FrequencyDictionary/bin/Debug
+/FrequencyDictionary/FrequencyDictionary/obj
+/FrequencyDictionary/packages
+/FrequencyDictionary/Interfaces/bin/Debug
+/FrequencyDictionary/Interfaces/obj
+/FrequencyDictionary/FrequencyDictionaryBuilder.Modules/bin/Debug
+/FrequencyDictionary/FrequencyDictionaryBuilder.Modules/obj
+/FrequencyDictionary/FrequencyDictionaryBuilder/bin/Debug
+/FrequencyDictionary/FrequencyDictionaryBuilder/obj
+/FrequencyDictionary/FrequencyDictionary.Tests/bin/Debug
+/FrequencyDictionary/FrequencyDictionary.Tests/obj
+/FrequencyDictionary/FrequencyDictionaryBuilder.Interfaces/bin/Debug
+/FrequencyDictionary/FrequencyDictionaryBuilder.Interfaces/obj/Debug
