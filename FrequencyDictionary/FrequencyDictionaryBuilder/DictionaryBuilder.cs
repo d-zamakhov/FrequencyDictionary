@@ -3,7 +3,6 @@ using Ninject;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace FrequencyDictionaryBuilder
@@ -13,6 +12,9 @@ namespace FrequencyDictionaryBuilder
     /// </summary>
     public class DictionaryBuilder : IDictionaryBuilder
     {
+        /// <summary>
+        /// number of words in single batch for processing
+        /// </summary>
         private int batchSize = 10000;
 
         private Dictionary<string, long> data;
@@ -46,7 +48,7 @@ namespace FrequencyDictionaryBuilder
                 {
                     if (!string.IsNullOrEmpty(word))
                     {
-                        dictionary.AddOrUpdate(word.ToLower(), 1, (key, oldVal) => Interlocked.Increment(ref oldVal));
+                        dictionary.AddOrUpdate(word.ToLower(), 1, (key, oldVal) => oldVal + 1);
                     }
                 }
             });

@@ -68,10 +68,10 @@ namespace FrequencyDictionaryBuilder.Tests
 
             var reference = new List<List<int>>()
             {
-                new List<int>(){1,2,3},
-                new List<int>(){4,5,6},
-                new List<int>(){7,8,9},
-                new List<int>(){ 0 }
+                new List<int>() { 1, 2, 3 },
+                new List<int>() { 4, 5, 6 },
+                new List<int>() { 7, 8, 9 },
+                new List<int>() { 0 }
             };
 
 

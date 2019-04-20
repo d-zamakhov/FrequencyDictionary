@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using FrequencyDictionaryBuilder.Interfaces;
 
-namespace FrequencyDictionaryBuilder
+namespace FrequencyDictionaryBuilder.Interfaces
 {
     /// <summary>
     /// Dictionary builder interface
