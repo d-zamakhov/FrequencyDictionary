@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modules\TextFileBuilderModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,13 +54,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FrequencyDictionary.Modules\FrequencyDictionary.Modules.csproj">
+      <Project>{1e92b42e-0987-48f1-b21a-c69e39b92231}</Project>
+      <Name>FrequencyDictionary.Modules</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FrequencyDictionaryBuilder.Interfaces\FrequencyDictionaryBuilder.Interfaces.csproj">
       <Project>{41CC5221-AA9E-447B-A30C-0943198624C6}</Project>
       <Name>FrequencyDictionaryBuilder.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FrequencyDictionaryBuilder\FrequencyDictionaryBuilder.csproj">
-      <Project>{ADC74F16-C2E6-4E6F-9321-A37727BB98BD}</Project>
-      <Name>FrequencyDictionaryBuilder</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

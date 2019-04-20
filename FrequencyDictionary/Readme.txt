@@ -3,9 +3,11 @@ Dmitry Zamakhov, 2019
 
 FrequencyDictionary
 *Executable
+
+FrequencyDictionary.Modules
 *Contains Ninject modules for building dictionary 
 
-DictionaryBuilder
+FrequencyDictionaryBuilder
 *Functionality for counting words occurrences number.
 *Provides reader from text file, output text file writer and multithreaded words counter
 

@@ -40,7 +40,7 @@ namespace FrequencyDictionary
 
         private static void RunBuilder(string source, string target)
         {
-            var dictionaryBuilder = kernel.Get<DictionaryBuilder>();
+            var dictionaryBuilder = kernel.Get<IDictionaryBuilder>();
             var data = dictionaryBuilder.BuildDictionary(source);
             dictionaryBuilder.SaveDictionary(target);
         }
