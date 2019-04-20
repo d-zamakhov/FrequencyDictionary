@@ -24,7 +24,7 @@ namespace FrequencyDictionaryBuilder
         /// <param name="source">Data source</param>
         /// <param name="trimChars">Chars to trim from the words</param>
         /// <returns></returns>
-        Dictionary<string, long> BuildDictionary(object source, params char[] trimChars);
+        Dictionary<string, long> BuildDictionary(object source);
 
         /// <summary>
         /// Writes dictionary to target

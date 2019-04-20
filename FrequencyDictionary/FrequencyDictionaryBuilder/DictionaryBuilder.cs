@@ -35,7 +35,7 @@ namespace FrequencyDictionaryBuilder
         /// <param name="source">Source input</param>
         /// <param name="trimChars">Chars to be trimmed from words</param>
         /// <returns>Dictionary of words and occurences numbers</returns>
-        public Dictionary<string, long> BuildDictionary(object source, params char[] trimChars)
+        public Dictionary<string, long> BuildDictionary(object source)
         {
             var words = this.Reader.ReadSource(source);
             var dictionary = new ConcurrentDictionary<string, long>();
@@ -46,7 +46,7 @@ namespace FrequencyDictionaryBuilder
                 {
                     if (!string.IsNullOrEmpty(word))
                     {
-                        dictionary.AddOrUpdate(word.ToLower().Trim(trimChars), 1, (key, oldVal) => Interlocked.Increment(ref oldVal));
+                        dictionary.AddOrUpdate(word.ToLower(), 1, (key, oldVal) => Interlocked.Increment(ref oldVal));
                     }
                 }
             });
