@@ -6,15 +6,15 @@ using System.Text;
 namespace FrequencyDictionaryBuilder.Writers
 {
     /// <summary>
-    /// Output writer to file
+    /// Output writer
     /// </summary>
     public class FileWriter : IOutputWriter
     {
         /// <summary>
-        /// Writes dictionary into file
+        /// Writes dictionary
         /// </summary>
         /// <param name="data">Dictionary</param>
-        /// <param name="filePath">Target file</param>
+        /// <param name="filePath">Target stream</param>
         public void Write(Dictionary<string, long> data, Stream output)
         {
             using (var writer = new StreamWriter(output, Encoding.GetEncoding("Windows-1251")))

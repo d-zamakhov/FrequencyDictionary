@@ -6,15 +6,15 @@ using System.Text;
 namespace FrequencyDictionaryBuilder.Readers
 {
     /// <summary>
-    /// Reader from file
+    /// Input data reader
     /// </summary>
     public class FileStringsReader : IInputReader
     {
         /// <summary>
-        /// Reads string by string
+        /// Reads source string by string
         /// </summary>
-        /// <param name="reader">Source text reader</param>
-        /// <returns>Enumeration of words in file</returns>
+        /// <param name="input">Source stream</param>
+        /// <returns>Enumeration of words</returns>
         public IEnumerable<string> ReadSource(Stream input)
         {
             string line;

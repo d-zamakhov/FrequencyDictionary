@@ -36,7 +36,6 @@ namespace FrequencyDictionaryBuilder
         /// Counts words occurences in source
         /// </summary>
         /// <param name="source">Source input</param>
-        /// <param name="trimChars">Chars to be trimmed from words</param>
         /// <returns>Dictionary of words and occurences numbers</returns>
         public Dictionary<string, long> BuildDictionary(Stream source)
         {

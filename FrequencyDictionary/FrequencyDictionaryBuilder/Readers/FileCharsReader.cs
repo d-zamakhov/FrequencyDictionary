@@ -6,13 +6,16 @@ using System.Text;
 
 namespace FrequencyDictionaryBuilder.Readers
 {
+    /// <summary>
+    /// Input data reader
+    /// </summary>
     public class FileCharsReader : IInputReader
     {
         /// <summary>
-        /// Reads contents by symbols
+        /// Reads source char by char
         /// </summary>
-        /// <param name="filePath">Source text file</param>
-        /// <returns>Enumeration of words in file</returns>
+        /// <param name="input">Source stream</param>
+        /// <returns>Enumeration of words</returns>
         public IEnumerable<string> ReadSource(Stream input)
         {
             int maxWordLength = 10;

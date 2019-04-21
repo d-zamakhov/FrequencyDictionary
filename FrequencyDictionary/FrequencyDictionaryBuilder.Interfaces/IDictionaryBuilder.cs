@@ -18,7 +18,7 @@ namespace FrequencyDictionaryBuilder.Interfaces
         /// <summary>
         /// Writes dictionary to target
         /// </summary>
-        /// <param name="target"></param>
+        /// <param name="target">Target</param>
         void SaveDictionary(Stream target);
     }
 }
