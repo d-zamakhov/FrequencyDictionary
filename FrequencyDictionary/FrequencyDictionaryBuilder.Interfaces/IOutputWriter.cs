@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 namespace FrequencyDictionaryBuilder.Interfaces
 {
@@ -12,6 +13,6 @@ namespace FrequencyDictionaryBuilder.Interfaces
         /// </summary>
         /// <param name="data">Dictionary</param>
         /// <param name="target">Target</param>
-        void Write(Dictionary<string, long> data, object target);
+        void Write(Dictionary<string, long> data, Stream target);
     }
 }

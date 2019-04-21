@@ -22,9 +22,9 @@ namespace FrequencyDictionaryBuilder.Tests
             var mockReader = new Mock<IInputReader>();
             var mockWriter = new Mock<IOutputWriter>();
 
-            mockReader.Setup(r => r.ReadSource("test")).Returns(() => new List<string>() { "W1", "w2", "W2", "W3", "w3", "W3" });
+            mockReader.Setup(r => r.ReadSource(null)).Returns(() => new List<string>() { "W1", "w2", "W2", "W3", "w3", "W3" });
             var builder = new DictionaryBuilder(mockReader.Object, mockWriter.Object);
-            var data = builder.BuildDictionary("test");
+            var data = builder.BuildDictionary(null);
 
             Assert.IsTrue(reference.Count == data.Count);
             var refKeys = reference.Keys.ToArray();
@@ -46,9 +46,9 @@ namespace FrequencyDictionaryBuilder.Tests
             var generator = new RandomGenerator();
             var mockReader = new Mock<IInputReader>();
             var mockWriter = new Mock<IOutputWriter>();
-            mockReader.Setup(r => r.ReadSource("random")).Returns(() => generator.GetSequence(refLength));
+            mockReader.Setup(r => r.ReadSource(null)).Returns(() => generator.GetSequence(refLength));
             var builder = new DictionaryBuilder(mockReader.Object, mockWriter.Object);
-            var data = builder.BuildDictionary("random");
+            var data = builder.BuildDictionary(null);
             var dataSummary = data.Values.Sum();
             Assert.AreEqual(refLength, dataSummary);
         }

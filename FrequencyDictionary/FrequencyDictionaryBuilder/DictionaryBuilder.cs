@@ -3,6 +3,7 @@ using Ninject;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -37,7 +38,7 @@ namespace FrequencyDictionaryBuilder
         /// <param name="source">Source input</param>
         /// <param name="trimChars">Chars to be trimmed from words</param>
         /// <returns>Dictionary of words and occurences numbers</returns>
-        public Dictionary<string, long> BuildDictionary(object source)
+        public Dictionary<string, long> BuildDictionary(Stream source)
         {
             var words = this.reader.ReadSource(source);
             var dictionary = new ConcurrentDictionary<string, long>();
@@ -61,7 +62,7 @@ namespace FrequencyDictionaryBuilder
         /// Stores counted data to output
         /// </summary>
         /// <param name="target">Target output</param>
-        public void SaveDictionary(object target)
+        public void SaveDictionary(Stream target)
         {
             if (this.data != null && this.data.Any())
             {

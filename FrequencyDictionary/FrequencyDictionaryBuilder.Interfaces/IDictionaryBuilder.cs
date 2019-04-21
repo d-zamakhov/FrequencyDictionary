@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 namespace FrequencyDictionaryBuilder.Interfaces
 {
@@ -12,12 +13,12 @@ namespace FrequencyDictionaryBuilder.Interfaces
         /// </summary>
         /// <param name="source">Data source</param>
         /// <returns>Word count dictionary</returns>
-        Dictionary<string, long> BuildDictionary(object source);
+        Dictionary<string, long> BuildDictionary(Stream source);
 
         /// <summary>
         /// Writes dictionary to target
         /// </summary>
         /// <param name="target"></param>
-        void SaveDictionary(object target);
+        void SaveDictionary(Stream target);
     }
 }

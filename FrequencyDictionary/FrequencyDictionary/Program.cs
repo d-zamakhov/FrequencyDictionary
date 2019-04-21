@@ -3,6 +3,8 @@ using FrequencyDictionaryBuilder.Interfaces;
 using Ninject;
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 
 namespace FrequencyDictionary
 {
@@ -27,13 +29,17 @@ namespace FrequencyDictionary
             {
                 Console.WriteLine($"Frequency Dictionary Builder start: source = {source} target = {target}");
                 var dictionaryBuilder = kernel.Get<IDictionaryBuilder>();
-
-                var sw = Stopwatch.StartNew();
-                var data = dictionaryBuilder.BuildDictionary(source);
-                sw.Stop();
-
+                using (var sourceStream = new FileStream(source, FileMode.Open))
+                {
+                    var sw = Stopwatch.StartNew();
+                    var data = dictionaryBuilder.BuildDictionary(sourceStream);
+                    sw.Stop();
+                }
                 Console.WriteLine($"Dictionary built in {0} ms. Now saving.");
-                dictionaryBuilder.SaveDictionary(target);
+                using (var targetStream = new FileStream(target, FileMode.Create))
+                {
+                    dictionaryBuilder.SaveDictionary(targetStream);
+                }
             }
             catch (Exception e)
             {

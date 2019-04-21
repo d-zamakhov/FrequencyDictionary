@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 namespace FrequencyDictionaryBuilder.Interfaces
 {
@@ -12,6 +13,6 @@ namespace FrequencyDictionaryBuilder.Interfaces
         /// </summary>
         /// <param name="source">Data source</param>
         /// <returns>Enumeration of found words</returns>
-        IEnumerable<string> ReadSource(object source);
+        IEnumerable<string> ReadSource(Stream source);
     }
 }

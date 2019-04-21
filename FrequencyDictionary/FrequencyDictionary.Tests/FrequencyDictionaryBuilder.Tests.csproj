@@ -60,6 +60,7 @@
     <Compile Include="DictionaryBuilderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomGenerator.cs" />
+    <Compile Include="ReadersTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

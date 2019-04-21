@@ -11,17 +11,16 @@ namespace FrequencyDictionaryBuilder.Readers
     public class FileStringsReader : IInputReader
     {
         /// <summary>
-        /// Reads file contents string by string
+        /// Reads string by string
         /// </summary>
-        /// <param name="filePath">Source text file</param>
+        /// <param name="reader">Source text reader</param>
         /// <returns>Enumeration of words in file</returns>
-        public IEnumerable<string> ReadSource(object filePathObj)
+        public IEnumerable<string> ReadSource(Stream input)
         {
-            var filePath = filePathObj.ToString();
-            using (var fileReader = new StreamReader(filePath, Encoding.GetEncoding("Windows-1251")))
+            string line;
+            using (var reader = new StreamReader(input, Encoding.GetEncoding("Windows-1251")))
             {
-                string line;
-                while ((line = fileReader.ReadLine()) != null)
+                while ((line = reader.ReadLine()) != null)
                 {
                     var words = line.Split(' ');
                     foreach (var word in words)
