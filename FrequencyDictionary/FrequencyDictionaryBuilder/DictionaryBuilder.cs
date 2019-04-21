@@ -1,5 +1,6 @@
 ﻿using FrequencyDictionaryBuilder.Interfaces;
 using Ninject;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,17 +20,16 @@ namespace FrequencyDictionaryBuilder
 
         private Dictionary<string, long> data;
 
-        /// <summary>
-        /// Gets or sets input data reader
-        /// </summary>
-        [Inject]
-        public IInputReader Reader { get; set; }
+        private readonly IInputReader reader;
 
-        /// <summary>
-        /// Gets or sets output writer
-        /// </summary>
+        private readonly IOutputWriter writer;
+
         [Inject]
-        public IOutputWriter Writer { get; set; }
+        public DictionaryBuilder(IInputReader reader, IOutputWriter writer)
+        {
+            this.reader = reader ?? throw new ArgumentNullException("reader");
+            this.writer = writer ?? throw new ArgumentNullException("writer");
+        }
 
         /// <summary>
         /// Counts words occurences in source
@@ -39,7 +39,7 @@ namespace FrequencyDictionaryBuilder
         /// <returns>Dictionary of words and occurences numbers</returns>
         public Dictionary<string, long> BuildDictionary(object source)
         {
-            var words = this.Reader.ReadSource(source);
+            var words = this.reader.ReadSource(source);
             var dictionary = new ConcurrentDictionary<string, long>();
 
             Parallel.ForEach(words.ToBatches(this.batchSize), wordsBatch =>
@@ -65,7 +65,7 @@ namespace FrequencyDictionaryBuilder
         {
             if (this.data != null && this.data.Any())
             {
-                this.Writer.Write(this.data, target);
+                this.writer.Write(this.data, target);
             }
         }
     }

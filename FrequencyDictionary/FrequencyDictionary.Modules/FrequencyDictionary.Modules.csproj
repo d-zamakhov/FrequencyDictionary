@@ -44,7 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextFileBuilderModule.cs" />
+    <Compile Include="TextFileStringsBuilderModule.cs" />
+    <Compile Include="TextFileCharsBuilderModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FrequencyDictionaryBuilder.Interfaces\FrequencyDictionaryBuilder.Interfaces.csproj">

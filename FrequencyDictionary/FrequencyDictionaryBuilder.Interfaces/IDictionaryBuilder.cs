@@ -8,16 +8,6 @@ namespace FrequencyDictionaryBuilder.Interfaces
     public interface IDictionaryBuilder
     {
         /// <summary>
-        /// Gets or sets input data reader
-        /// </summary>
-        IInputReader Reader { get; set; }
-
-        /// <summary>
-        /// Gets or sets output data writer
-        /// </summary>
-        IOutputWriter Writer { get; set; }
-
-        /// <summary>
         /// Builds dictionary from source
         /// </summary>
         /// <param name="source">Data source</param>

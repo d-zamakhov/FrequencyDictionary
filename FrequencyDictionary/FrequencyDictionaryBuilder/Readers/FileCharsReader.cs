@@ -1,17 +1,15 @@
 ﻿using FrequencyDictionaryBuilder.Interfaces;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace FrequencyDictionaryBuilder.Readers
 {
-    /// <summary>
-    /// Reader from file
-    /// </summary>
-    public class FileReader : IInputReader
+    public class FileCharsReader : IInputReader
     {
         /// <summary>
-        /// Reads file contents
+        /// Reads file contents by symbols
         /// </summary>
         /// <param name="filePath">Source text file</param>
         /// <returns>Enumeration of words in file</returns>
@@ -20,17 +18,28 @@ namespace FrequencyDictionaryBuilder.Readers
             var filePath = filePathObj.ToString();
             using (var fileReader = new StreamReader(filePath, Encoding.GetEncoding("Windows-1251")))
             {
-                string line;
-                while ((line = fileReader.ReadLine()) != null)
+                List<char> chars = new List<char>();
+                while (!fileReader.EndOfStream)
                 {
-                    var words = line.Split(' ');
-                    foreach (var word in words)
+                    var c = (char)fileReader.Read();
+                    if (c == ' ' || c == '\r' || c == '\n')
                     {
-                        if (!string.IsNullOrEmpty(word))
+                        if (chars.Any())
                         {
-                            yield return word;
+                            yield return new string(chars.ToArray());
                         }
+
+                        chars = new List<char>();
                     }
+                    else
+                    {
+                        chars.Add(c);
+                    }
+                }
+
+                if (chars.Any())
+                {
+                    yield return new string(chars.ToArray());
                 }
             }
         }

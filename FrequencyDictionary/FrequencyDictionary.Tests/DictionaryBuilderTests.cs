@@ -9,14 +9,6 @@ namespace FrequencyDictionaryBuilder.Tests
     [TestClass]
     public class DictionaryBuilderTests
     {
-        private DictionaryBuilder builder;
-
-        [TestInitialize]
-        public void Setup()
-        {
-            this.builder = new DictionaryBuilder();
-        }
-
         [TestMethod]
         public void BuildDictionaryTest()
         {
@@ -27,10 +19,12 @@ namespace FrequencyDictionaryBuilder.Tests
                 { "w1", 1 },
             };
 
-            var mock = new Mock<IInputReader>();
-            mock.Setup(r => r.ReadSource("test")).Returns(() => new List<string>() { "W1", "w2", "W2", "W3", "w3", "W3" });
-            this.builder.Reader = mock.Object;
-            var data = this.builder.BuildDictionary("test");
+            var mockReader = new Mock<IInputReader>();
+            var mockWriter = new Mock<IOutputWriter>();
+
+            mockReader.Setup(r => r.ReadSource("test")).Returns(() => new List<string>() { "W1", "w2", "W2", "W3", "w3", "W3" });
+            var builder = new DictionaryBuilder(mockReader.Object, mockWriter.Object);
+            var data = builder.BuildDictionary("test");
 
             Assert.IsTrue(reference.Count == data.Count);
             var refKeys = reference.Keys.ToArray();
@@ -50,10 +44,11 @@ namespace FrequencyDictionaryBuilder.Tests
         {
             long refLength = 10000;
             var generator = new RandomGenerator();
-            var mockGenerator = new Mock<IInputReader>();
-            mockGenerator.Setup(r => r.ReadSource("random")).Returns(() => generator.GetSequence(refLength));
-            this.builder.Reader = mockGenerator.Object;
-            var data = this.builder.BuildDictionary("random");
+            var mockReader = new Mock<IInputReader>();
+            var mockWriter = new Mock<IOutputWriter>();
+            mockReader.Setup(r => r.ReadSource("random")).Returns(() => generator.GetSequence(refLength));
+            var builder = new DictionaryBuilder(mockReader.Object, mockWriter.Object);
+            var data = builder.BuildDictionary("random");
             var dataSummary = data.Values.Sum();
             Assert.AreEqual(refLength, dataSummary);
         }

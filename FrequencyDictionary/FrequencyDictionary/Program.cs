@@ -1,7 +1,8 @@
-﻿using FrequencyDictionaryBuilder.Interfaces;
-using FrequencyDictionaryBuilder.Modules;
+﻿using FrequencyDictionary.Modules;
+using FrequencyDictionaryBuilder.Interfaces;
 using Ninject;
 using System;
+using System.Diagnostics;
 
 namespace FrequencyDictionary
 {
@@ -20,12 +21,19 @@ namespace FrequencyDictionary
             var source = args[0];
             var target = args[1];
 
-            kernel = new StandardKernel(new TextFileBuilderModule());
+            kernel = new StandardKernel(new TextFileCharsBuilderModule());
 
             try
             {
                 Console.WriteLine($"Frequency Dictionary Builder start: source = {source} target = {target}");
-                RunBuilder(source, target);
+                var dictionaryBuilder = kernel.Get<IDictionaryBuilder>();
+
+                var sw = Stopwatch.StartNew();
+                var data = dictionaryBuilder.BuildDictionary(source);
+                sw.Stop();
+
+                Console.WriteLine($"Dictionary built in {0} ms. Now saving.");
+                dictionaryBuilder.SaveDictionary(target);
             }
             catch (Exception e)
             {
@@ -35,14 +43,6 @@ namespace FrequencyDictionary
             {
                 Console.WriteLine("Finished");
             }
-
-        }
-
-        private static void RunBuilder(string source, string target)
-        {
-            var dictionaryBuilder = kernel.Get<IDictionaryBuilder>();
-            var data = dictionaryBuilder.BuildDictionary(source);
-            dictionaryBuilder.SaveDictionary(target);
         }
     }
 }

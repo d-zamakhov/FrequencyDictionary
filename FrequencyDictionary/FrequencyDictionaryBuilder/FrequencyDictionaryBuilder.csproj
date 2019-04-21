@@ -48,7 +48,8 @@
   <ItemGroup>
     <Compile Include="DictionaryBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Readers\FileReader.cs" />
+    <Compile Include="Readers\FileCharsReader.cs" />
+    <Compile Include="Readers\FileStringsReader.cs" />
     <Compile Include="BatchesHelper.cs" />
     <Compile Include="Writers\FileWriter.cs" />
   </ItemGroup>
