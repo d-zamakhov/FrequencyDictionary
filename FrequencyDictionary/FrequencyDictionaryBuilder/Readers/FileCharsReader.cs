@@ -18,7 +18,7 @@ namespace FrequencyDictionaryBuilder.Readers
             var filePath = filePathObj.ToString();
             using (var fileReader = new StreamReader(filePath, Encoding.GetEncoding("Windows-1251")))
             {
-                int maxWordLength = 0;
+                int maxWordLength = 10;
                 List<char> chars = new List<char>();
                 
                 while (!fileReader.EndOfStream)
